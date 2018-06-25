@@ -14,6 +14,7 @@ body {
     grid-template-columns: 80% 20%;
 }
 
-/* .gifs {
-
-} */
+.gifs {
+    height: 200px;
+    float: left;
+}
