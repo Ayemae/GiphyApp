@@ -1,7 +1,7 @@
 $(document).ready(function () {
     
     var newAnimal
-    var animalList = ["dog"];
+    var animalList = ["dog", "cat"];
 
 
 
@@ -19,10 +19,16 @@ $(document).ready(function () {
     $("#add-animal").on("click", function (event) {
         event.preventDefault();
         newAnimal = $("#search-input").val().trim();
+        if (!newAnimal) {return}
         animalList.push(newAnimal);
         newButtons();
+        $("#search-input").val("");
         /*Test*/console.log(animalList);
     });
+
+    $("#clear-gifs").on("click", function () {
+        $("#gifs-4ever").empty();
+    })
 
     $(document).on("click", ".animalBtn", function () {
         var thisAnimal = $(this).attr("data-name");
