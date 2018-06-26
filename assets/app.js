@@ -2,7 +2,6 @@ $(document).ready(function () {
     
     var newAnimal
     var animalList = ["dog", "cat"];
-    var pauseGif = "_s.gif";
 
 
 
@@ -58,13 +57,16 @@ $(document).ready(function () {
             var results = response.data;
 
             for (var j = 0; j < results.length; j++) {
-                var newGif = $("<div>");
+                var newGif = $("<div class='gif-wrapper'>");
                 var imgTag = $("<img class='gif'>");
                 imgTag.attr("src", results[j].images.fixed_height.url.replace(".gif", "_s.gif"));
                 imgTag.attr("data-state", "paused");
+                imgTag.attr("title", "Click to animate!");
+                var rateBox = $("<div class='rating'>").text(results[j].rating);
 
+                newGif.prepend(rateBox);
                 newGif.prepend(imgTag);
-
+                
                 $("#gifs-4ever").prepend(newGif);
                 /*Test*/console.log(queryURL)
             } // end for loop

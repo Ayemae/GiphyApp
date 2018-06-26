@@ -22,7 +22,6 @@ button, input {
 button,
 #add-animal {
     font-size: 22px;
-    font-weight: bold;
     color: #fff;
     background-color: #5959ff;
     cursor: pointer;
@@ -57,5 +56,22 @@ header {
     height: 200px;
     cursor: pointer;
     float: left;
+}
+
+.gif-wrapper {
     margin: 10px auto;
+    position: relative;
+}
+
+.rating {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-weight: bold;
+    color: #fff;
+    background-color: #000;
+    text-transform: uppercase;
+    padding: 3px 8px 2px;
+    border-radius: 2px;
+    letter-spacing: 1px;
 }
