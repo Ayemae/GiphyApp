@@ -2,6 +2,7 @@ $(document).ready(function () {
     
     var newAnimal
     var animalList = ["dog", "cat"];
+    var pauseGif = "_s.gif";
 
 
 
@@ -30,6 +31,20 @@ $(document).ready(function () {
         $("#gifs-4ever").empty();
     })
 
+
+
+    // Hmm, maybe later.
+    $("#edit-buttons").on("click", function() {
+        var rmBtn = $("<button id='rm-btn'>");
+        rmBtn.text(X);
+        $(".animalBtn").text().prepend(rmBtn);
+    })
+
+    $("#rm-btn").on("click", function() {
+        
+    })
+    ///
+
     $(document).on("click", ".animalBtn", function () {
         var thisAnimal = $(this).attr("data-name");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
@@ -43,9 +58,10 @@ $(document).ready(function () {
             var results = response.data;
 
             for (var j = 0; j < results.length; j++) {
-                var newGif = $("<div class='gifs'>");
-                var imgTag = $("<img>");
-                imgTag.attr("src", results[j].images.fixed_height.url);
+                var newGif = $("<div>");
+                var imgTag = $("<img class='gif'>");
+                imgTag.attr("src", results[j].images.fixed_height.url.replace(".gif", "_s.gif"));
+                imgTag.attr("data-state", "paused");
 
                 newGif.prepend(imgTag);
 
@@ -56,7 +72,25 @@ $(document).ready(function () {
 
     });
 
+    $(document.body).on("click", ".gif", function() {
+        var state = $(this).attr("data-state");
+        console.log("YO")
+        console.log(gifURL);
+        console.log(state);
 
+        if( state === "paused") {
+
+            $(this).attr("data-state", "animated")
+            var gifURL = $(this).attr("src").replace("_s.gif", ".gif");
+            $(this).attr("src", gifURL);
+
+        } else if ( state === "animated") {
+
+            $(this).attr("data-state", "paused")
+            var gifURL = $(this).attr("src").replace(".gif", "_s.gif");
+            $(this).attr("src", gifURL);
+        }
+    });
 
 
 }); //end doc.ready

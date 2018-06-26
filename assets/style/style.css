@@ -53,8 +53,9 @@ header {
     justify-content: space-evenly;
 }
 
-.gifs {
+.gif {
     height: 200px;
+    cursor: pointer;
     float: left;
     margin: 10px auto;
 }
